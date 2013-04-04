@@ -11,11 +11,11 @@ class zfs_auto_snapshot::cron {
     hour     => 0,
   }
   cron { 'zfssnap_weekly': 
-    command  => "/usr/sbin/zfs-auto-snapshot --syslog --label weekly --keep $zfs_auto_snapshot::params::weekly_snaps --recursive $zfs_auto_snapshot::params::$fsname",
-    user     => 'root',
-    minute   => 0,
-    hour     => 0,
-    monthday => 1,
+    command => "/usr/sbin/zfs-auto-snapshot --syslog --label weekly --keep $zfs_auto_snapshot::params::weekly_snaps --recursive $zfs_auto_snapshot::params::$fsname",
+    user    => 'root',
+    minute  => 0,
+    hour    => 0,
+    weekday => 1,
   }
 
 }
