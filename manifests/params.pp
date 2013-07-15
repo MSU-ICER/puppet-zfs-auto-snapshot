@@ -2,7 +2,7 @@ class zfs-auto-snapshot::params {
 
 # Filesystem to snapshot:
 # Default (specific to some MSU systems)
-  $fsname = [ 'localpool' ]
+  $fsname = $pool_names
 
 # Number of snapshots:
 # Number of hourly snaps to keep:
