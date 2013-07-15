@@ -1,4 +1,4 @@
-class zfs_auto_snapshot {
+class zfs_auto_snapshot($pool_names) {
   include zfs_auto_snapshot::cron
 # Installs to /usr/local/sbin.
   file { '/usr/local' :
