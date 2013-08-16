@@ -5,18 +5,18 @@ class zfs_auto_snapshot::cron(
   $pool_names,        # List of pools to snapshot
 ) {
   cron { 'zfssnap_hourly': 
-    command  => "/usr/sbin/zfs-auto-snapshot --syslog --label hourly --keep $hourly_snaps --recursive $pool_names",
+    command  => "/usr/local/sbin/zfs-auto-snapshot --syslog --label hourly --keep $hourly_snaps --recursive $pool_names",
     user     => 'root',
     minute   => 0,
   }
   cron { 'zfssnap_daily': 
-    command  => "/usr/sbin/zfs-auto-snapshot --syslog --label daily --keep $daily_snaps --recursive $pool_names",
+    command  => "/usr/local/sbin/zfs-auto-snapshot --syslog --label daily --keep $daily_snaps --recursive $pool_names",
     user     => 'root',
     minute   => 0,
     hour     => 0,
   }
   cron { 'zfssnap_weekly': 
-    command => "/usr/sbin/zfs-auto-snapshot --syslog --label weekly --keep $weekly_snaps --recursive $pool_names",
+    command => "/usr/local/sbin/zfs-auto-snapshot --syslog --label weekly --keep $weekly_snaps --recursive $pool_names",
     user    => 'root',
     minute  => 0,
     hour    => 0,
