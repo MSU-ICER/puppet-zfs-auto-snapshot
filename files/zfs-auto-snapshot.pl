@@ -19,8 +19,8 @@
 # Place, Suite 330, Boston, MA  02111-1307  USA
 #
 
-our $ZFS="zfs";
-our $ZPOOL="zpool";
+our $ZFS="/sbin/zfs";
+our $ZPOOL="/sbin/zpool";
 
 use Getopt::Long;
 
