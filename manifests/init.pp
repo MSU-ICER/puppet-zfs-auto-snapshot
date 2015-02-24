@@ -2,7 +2,7 @@ class zfs_auto_snapshot(
   $hourly_snaps = $zfs_auto_snapshot::params::hourly_snaps,
   $daily_snaps  = $zfs_auto_snapshot::params::daily_snaps,
   $weekly_snaps = $zfs_auto_snapshot::params::weekly_snaps,
-  $pool_names   = $zfs_auto_snapshot::params::pool_names,
+  $fs_names     = $zfs_auto_snapshot::params::fs_names,
 )
 inherits zfs_auto_snapshot::params {
 
@@ -10,7 +10,7 @@ inherits zfs_auto_snapshot::params {
     hourly_snaps => $hourly_snaps,
     daily_snaps  => $daily_snaps,
     weekly_snaps => $weekly_snaps,
-    pool_names   => $pool_names,
+    fs_names     => $fs_names,
   }
 
   # Installs to /usr/local/sbin.which we can assume exists as per the Filesystem Hierachy Standard
