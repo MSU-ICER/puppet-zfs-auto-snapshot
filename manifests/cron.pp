@@ -1,17 +1,24 @@
-class zfs_auto_snapshot::cron {
+class zfs_auto_snapshot::cron(
+  $hourly_snaps,      # Number of hourly snapshots to keep
+  $daily_snaps,       # Number of daily snapshots to keep
+  $weekly_snaps,      # Number of weekly snapshots to keep
+  $fs_names,          # List of filesystems to snapshot
+  ) {
+  $fs_names_str = join($fs_names, " ")
+
   cron { 'zfssnap_hourly': 
-    command  => "/usr/sbin/zfs-auto-snapshot --syslog --label hourly --keep $zfs_auto_snapshot::params::hourly_snaps --recursive $zfs_auto_snapshot::params::$fsname",
+    command  => "/usr/local/sbin/zfs-auto-snapshot --syslog --label hourly --keep $hourly_snaps $fs_names_str",
     user     => 'root',
     minute   => 0,
   }
   cron { 'zfssnap_daily': 
-    command  => "/usr/sbin/zfs-auto-snapshot --syslog --label daily --keep $zfs_auto_snapshot::params::daily_snaps --recursive $zfs_auto_snapshot::params::$fsname",
+    command  => "/usr/local/sbin/zfs-auto-snapshot --syslog --label daily --keep $daily_snaps $fs_names_str",
     user     => 'root',
     minute   => 0,
     hour     => 0,
   }
   cron { 'zfssnap_weekly': 
-    command => "/usr/sbin/zfs-auto-snapshot --syslog --label weekly --keep $zfs_auto_snapshot::params::weekly_snaps --recursive $zfs_auto_snapshot::params::$fsname",
+    command => "/usr/local/sbin/zfs-auto-snapshot --syslog --label weekly --keep $weekly_snaps $fs_names_str",
     user    => 'root',
     minute  => 0,
     hour    => 0,
