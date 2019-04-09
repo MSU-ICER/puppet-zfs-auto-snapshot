@@ -1,1 +1,0 @@
-include zfs_auto_snapshot
